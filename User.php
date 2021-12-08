@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home</title>
+  <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
+  <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Candal|Alegreya+Sans">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/imagehover.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+
+<body>
+  <?php
+  session_start();
+  if (!empty($_SESSION['id'])) {
+    echo "<nav class='navbar navbar-default navbar-fixed-top'>";
+    echo "<div class='container'>";
+    echo "<div class='navbar-header'>";
+    echo "<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#myNavbar'>";
+    echo "<span class='icon-bar'></span>";
+    echo "<span class='icon-bar'></span>";
+    echo "<span class='icon-bar'></span>";
+    echo "</button>";
+    echo "<a class='navbar-brand' href='User.php'>Smart<span>kids</span></a>";
+    echo "</div>";
+    echo "<div class='collapse navbar-collapse' id='myNavbar'>";
+    echo "<ul class='nav navbar-nav navbar-right'>";
+    echo "<li><a href='AddChild.php'>Add Child</a></li>";
+    echo "<li><a href='SendMessages.php'>Send Message</a></li>";
+    echo "<li><a href='DisplayMessages.php'>View Messages</a></li>";
+    echo "<li><a href='Help.php'>Help</a></li>";
+    echo "<li><a href='Signout.php'>Sign Out</a></li>";
+    echo "</ul>";
+    echo "</div>";
+    echo "</div>";
+    echo "</nav>";
+  }
+  ?>
+  <!--Navigation bar-->
+
+  <!--/ Navigation bar-->
+  <div class="modal fade" id="login" role="dialog">
+    <div class="modal-dialog modal-sm">
+
+      <!-- Modal content no 1-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center form-title">Login</h4>
+        </div>
+        <div class="modal-body padtrbl">
+
+          <div class="login-box-body">
+            <p class="login-box-msg">Sign in to start your session</p>
+            <div class="form-group">
+              <form name="" id="loginForm">
+                <div class="form-group has-feedback">
+                  <!----- username -------------->
+                  <input class="form-control" placeholder="Username" id="loginid" type="text" autocomplete="off" />
+                  <span style="display:none;font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
+                  <!---Alredy exists  ! -->
+                  <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                  <!----- password -------------->
+                  <input class="form-control" placeholder="Password" id="loginpsw" type="password" autocomplete="off" />
+                  <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw"></span>
+                  <!---Alredy exists  ! -->
+                  <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="checkbox icheck">
+                      <label>
+                        <input type="checkbox" id="loginrem"> Remember Me
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                    <button type="button" class="btn btn-green btn-block btn-flat" onclick="userlogin()">Sign In</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!--Modal box-->
+  <div class="modal fade" id="login" role="dialog">
+    <div class="modal-dialog modal-sm">
+
+      <!-- Modal content no 1-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center form-title">Login</h4>
+        </div>
+        <div class="modal-body padtrbl">
+
+          <div class="login-box-body">
+            <p class="login-box-msg">Sign in to start your session</p>
+            <div class="form-group">
+              <form name="" id="loginForm">
+                <div class="form-group has-feedback">
+                  <!----- username -------------->
+                  <input class="form-control" placeholder="Username" id="loginid" type="text" autocomplete="off" />
+                  <span style="display:none;font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
+                  <!---Alredy exists  ! -->
+                  <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                  <!----- password -------------->
+                  <input class="form-control" placeholder="Password" id="loginpsw" type="password" autocomplete="off" />
+                  <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw"></span>
+                  <!---Alredy exists  ! -->
+                  <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="checkbox icheck">
+                      <label>
+                        <input type="checkbox" id="loginrem"> Remember Me
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                    <button type="button" class="btn btn-green btn-block btn-flat" onclick="userlogin()">Sign
+                      In</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!--/ Modal box-->
+  <!--Banner-->
+  <div class="banner">
+    <div class="bg-color">
+      <div class="container">
+        <div class="row">
+          <div class="banner-text text-center">
+            <div class="text-border">
+              <h2 class="text-dec"><?php echo "Welcome " . $_SESSION['name'] . ",<br>" . "Your ID Is (" . $_SESSION['id'] . ")"; ?></h2>
+            </div>
+            <div class="intro-para text-center quote">
+              <p class="big-text">Learning Today . . . Leading Tomorrow.</p>
+              <p class="big-text">We welcome you to our website and hope to provide reassuring information, confidence and comfort in choosing a pre-school for your child!</p>
+
+            </div>
+            <a href="#feature" class="mouse-hover">
+              <div class="mouse"></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/ Banner-->
+  <!--Feature-->
+  <section id="feature" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="header-section text-center">
+          <h2>Learning should be fun!</h2>
+          <p>We, at SmartKids Nursery School, infuse this belief into our lesson plans each day to ensure your child develops a positive self-concept and feeling of self-worth.</p>
+          <hr class="bottom-line">
+        </div>
+        <div class="feature-info">
+          <div class="fea">
+            <div class="col-md-4">
+              <div class="heading pull-right">
+                <h4>Safe Place for learning</h4>
+                <p>We provide a safe space for children to explore and get to learn about the world</p>
+              </div>
+              <div class="fea-img pull-left">
+                <i class="fa fa-css3"></i>
+              </div>
+            </div>
+          </div>
+          <div class="fea">
+            <div class="col-md-4">
+              <div class="heading pull-right">
+                <h4>Learning is FUN!</h4>
+                <p>Teaching children is the toughest job there could be, but in SmartKids we make learning fun and enjoyable for the children to learn and have the best times</p>
+              </div>
+              <div class="fea-img pull-left">
+                <i class="fa fa-drupal"></i>
+              </div>
+            </div>
+          </div>
+          <div class="fea">
+            <div class="col-md-4">
+              <div class="heading pull-right">
+                <h4>Certified by British Council</h4>
+                <p>Our nursery is certified by the British Council, and our content is directed towards the set measrured used by the council</p>
+              </div>
+              <div class="fea-img pull-left">
+                <i class="fa fa-trophy"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ feature-->
+  <!--Organisations-->
+
+
+
+  <!--/ Cta-->
+  <!--work-shop-->
+  <section id="work-shop" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="header-section text-center">
+          <h2>Upcoming Events</h2>
+          <hr class="bottom-line">
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="service-box text-center">
+
+            <div class="icon-text">
+              <h4 class="ser-text">Christmas Party!</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="service-box text-center">
+
+            <div class="icon-text">
+              <h4 class="ser-text">A Trip To Kidzania!</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="service-box text-center">
+
+            <div class="icon-text">
+              <h4 class="ser-text">Graduation Ceremony!</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ work-shop-->
+  <!--Faculity member-->
+  <section id="faculity-member" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="header-section text-center">
+          <h2>Meet Our Nursery Staff</h2>
+          <hr class="bottom-line">
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="pm-staff-profile-container">
+            <div class="pm-staff-profile-image-wrapper text-center">
+              <div class="pm-staff-profile-image">
+                <img src="img/mentor.jpg" alt="" class="img-thumbnail img-circle" />
+              </div>
+            </div>
+            <div class="pm-staff-profile-details text-center">
+              <p class="pm-staff-profile-name">Bryan Johnson</p>
+              <p class="pm-staff-profile-title">Teacher</p>
+
+              <p class="pm-staff-profile-bio">One of our top teachers who has experience with children and certified child counselor</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="pm-staff-profile-container">
+            <div class="pm-staff-profile-image-wrapper text-center">
+              <div class="pm-staff-profile-image">
+                <img src="img/mentor1.jpg" alt="" class="img-thumbnail img-circle" />
+              </div>
+            </div>
+            <div class="pm-staff-profile-details text-center">
+              <p class="pm-staff-profile-name">Jessica Stewards</p>
+              <p class="pm-staff-profile-title">Co-Assistant</p>
+
+              <p class="pm-staff-profile-bio">Jessica will always have an eye on the kids and take good care of them</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="pm-staff-profile-container">
+            <div class="pm-staff-profile-image-wrapper text-center">
+              <div class="pm-staff-profile-image">
+                <img src="img/mentor2.jpg" alt="" class="img-thumbnail img-circle" />
+              </div>
+            </div>
+            <div class="pm-staff-profile-details text-center">
+              <p class="pm-staff-profile-name">Jack Adams</p>
+              <p class="pm-staff-profile-title">Doctor</p>
+
+              <p class="pm-staff-profile-bio">Whatever happens to your child, Jack who is one of our best doctors will be there to immediately treat the child</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Faculity member-->
+  <!--Testimonial-->
+
+  <!--/ Testimonial-->
+  <!--Courses-->
+  <section id="courses" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="header-section text-center">
+          <h2>Our Top Childrens ^.^</h2>
+          <hr class="bottom-line">
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-6 padleft-right">
+          <figure class="imghvr-fold-up">
+            <img src="img/course01.jpg" class="img-responsive">
+            <figcaption>
+              <h3>Top in English </h3>
+              <p>meet Ramez with highest grades in English classes </p>
+            </figcaption>
+            <a href="#"></a>
+          </figure>
+        </div>
+        <div class="col-md-4 col-sm-6 padleft-right">
+          <figure class="imghvr-fold-up">
+            <img src="img/course02.jpg" class="img-responsive">
+            <figcaption>
+              <h3>Most Creative kid </h3>
+              <p>Meet Rawan the most creative kid in the class </p>
+            </figcaption>
+            <a href="#"></a>
+          </figure>
+        </div>
+        <div class="col-md-4 col-sm-6 padleft-right">
+          <figure class="imghvr-fold-up">
+            <img src="img/course03.jpg" class="img-responsive">
+            <figcaption>
+              <h3>Most polite kid </h3>
+              <p>Meet Sara the most polite kid in class </p>
+            </figcaption>
+            <a href="#"></a>
+          </figure>
+        </div>
+        <div class="col-md-4 col-sm-6 padleft-right">
+          <figure class="imghvr-fold-up">
+            <img src="img/course04.jpg" class="img-responsive">
+            <figcaption>
+              <h3>Funniest kid in class </h3>
+              <p>Meet Jasmine the kid with the greatest sense of humor and warm smile </p>
+            </figcaption>
+            <a href="#"></a>
+          </figure>
+        </div>
+        <div class="col-md-4 col-sm-6 padleft-right">
+          <figure class="imghvr-fold-up">
+            <img src="img/course05.jpg" class="img-responsive">
+            <figcaption>
+              <h3>The most freindly</h3>
+              <p>Meet Seif the kid who everybody likes </p>
+            </figcaption>
+            <a href="#"></a>
+          </figure>
+        </div>
+        <div class="col-md-4 col-sm-6 padleft-right">
+          <figure class="imghvr-fold-up">
+            <img src="img/course06.jpg" class="img-responsive">
+            <figcaption>
+              <h3>Class clown </h3>
+              <p>Meet Seif Hany the silliest Kid with a big heart </p>
+            </figcaption>
+            <a href="#"></a>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Courses-->
+  <!--Pricing-->
+
+  <!--/ Pricing-->
+
+  <!--Footer-->
+  <footer>
+    <div class="container text-center">
+
+      </form>
+      <!-- End newsletter-form -->
+      <ul class="social-links">
+        <a href="#link"><i class="fa fa-twitter fa-fw"></i></a>
+        <a href="#link"><i class="fa fa-google-plus fa-fw"></i></a>
+        <a href="#link"><i class="fa fa-facebook fa-fw"></i></a>
+        <a href="#link"><i class="fa fa-dribbble fa-fw"></i></a>
+        <a href="#link"><i class="fa fa-linkedin fa-fw"></i></a>
+      </ul>
+      ©2016 Mentor Theme. All rights reserved
+      <div class="credits">
+        <!--
+      All the links in the footer should remain intact.
+      You can delete the links only if you purchased the pro version.
+      Licensing information: https://bootstrapmade.com/license/
+      Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Mentor
+    -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade.com</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--/ Footer-->
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="contactform/contactform.js"></script>
+
+</body>
+
+</html>
